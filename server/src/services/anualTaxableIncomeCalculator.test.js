@@ -10,5 +10,13 @@ test('Anual taxable person 25000000 single => 246000000', () => {
 })
 
 test('unrecognized relief code', () => {
-    expect(() => services(2500000, 'K4')).toThrow("This Tax Relief Options not ready for this version");
+    expect(() => services(2500000, 'K4')).toThrow();
+})
+
+test('not a number', () => {
+    expect(() => services("0x90m", "K4")).toThrow();
+})
+
+test('input must be exists', () => {
+    expect(() => services(undefined, null)).toThrow();
 })
